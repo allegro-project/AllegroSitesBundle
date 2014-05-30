@@ -1,0 +1,27 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% form_theme form allg_template('Enquiry:contact_captcha_widget.html') %}
+<form
+    action="{{ path('AllegroSites_contact', {'site': site, '_locale':_locale}) }}"
+    method="post"
+    {{ form_enctype(form) }}
+    class="allegro">
+        {{ form_errors(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.body) }}
+        {{ form_row(form.captcha) }}
+        {{ form_rest(form) }}
+        <div>
+            <input class="submit" type="submit" value="{% trans %}contact.form.submit.label{% endtrans %}">
+    </div>
+</form>

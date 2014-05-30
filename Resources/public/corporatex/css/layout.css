@@ -1,0 +1,252 @@
+/* http://mystrd.at/modern-clean-css-sticky-footer/ */
+body {
+    margin-bottom: 190px; /* bottom = footer height // + some margin */
+}
+#footer {
+    height: 140px;
+}
+
+/* - - - - */
+
+body {
+    background: url(../img/bg.png) fixed;
+}
+
+/* - - - - */
+
+#header {
+    width: 100%;
+    max-width: 1000px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f1f1f1), color-stop(51%,#e1e1e1), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+}
+
+/*http://www.devinrolsen.com/pure-css-menu-with-infinite-sub-menus-tutorial/*/
+#main-menu > ul, #main-menu > ul ul, #main-menu > ul ul li { margin:0px; padding:0px; }
+#main-menu li {float:left; display:inline; cursor:pointer; list-style:none; padding:0px 10px 0px 10px; position:relative;}
+#main-menu > ul > li > ul {left:-1px !important; top:100% !important;}
+#main-menu li, #main-menu li a {color:#000; text-decoration:none;}
+#main-menu > ul ul li { width:100%; text-indent:10px; line-height:30px; margin-right:10px; border-left:none; border-right:none; background:#fff;}
+#main-menu li a {display:block; width:inherit; height:inherit;}
+#main-menu > ul ul { display:none; }
+#main-menu li:hover > a, #main-menu li:hover { color:#fff; background:#000; }
+#main-menu li:hover > ul { display:block; position:absolute; width:200px; top:-2px; left:50%; z-index:1000; border:1px #eee solid; }
+#main-menu li:hover { position:relative; z-index:2000; }
+/* - - - */
+#main-menu { font-family: 'Raleway', sans-serif; text-transform: uppercase; }
+#main-menu > ul > li { line-height: 50pt; }
+#main-menu > ul ul li {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f1f1f1), color-stop(51%,#e1e1e1), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+}
+#main-menu a { border: 0; }
+
+/* - - - - */
+
+#login-link {
+    padding: 5px;
+    background: #ccc;
+    text-align: right;
+    float: right;
+    border-radius: 4px;
+    margin: 8px;
+    font-size: 75%;
+}
+
+#login-link a {
+    text-decoration: none;
+    border: 0;
+}
+
+#other-langs {
+    background: #ddd;
+    padding: 6px 0;
+    border-radius: 4px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 10px auto 0;
+    text-align: right;
+}
+
+#banner-container {
+    width: 90%;
+    max-width: 1000px;
+    height: 300px;
+    text-align: center;
+    background: url('../img/pixbay-blogging-336376_1280.jpg') 50% 50% no-repeat;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 4px;
+}
+
+#banner-text {
+    position: absolute;
+    background: rgba(200,200,200, .8);
+    display: inline-block;
+    padding: 25px;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    font-size: 180%;
+    font-weight: 300;
+    bottom: 30px;
+    right: 30px;
+    text-align: right;
+    color: #444;
+    border-radius: 4px;
+}
+
+/* - - - - */
+
+#main-container ul {
+    list-style-type: none;
+}
+
+#main-container li:before {
+    font-family: 'FontAwesome';
+    content: '\f101';
+    margin:0 5px 0 -15px;
+    color: #333;
+    font-size: 75%;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid #666;
+    color: #D94C3A;
+}
+a:hover {
+    border-color: transparent;
+}
+
+#main-container li a {
+    text-decoration: none;
+    color: #D94C3A;
+}
+
+article.main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 10px auto 0;
+    background: #eee;
+    border-radius: 4px;
+    padding: 10px 0;
+}
+
+.info-block {
+    background: #ccc;
+    display: inline-block;
+    margin: 10px auto;
+    width: 29%;
+    max-width: 330px;
+    transition:all 0.4s;
+    border-radius: 4px;
+    vertical-align: top;
+}
+
+.center-content {
+    text-align: center;
+}
+
+.info-block i.fa {
+    color: #444;
+    transition:all 0.4s;
+    cursor: default;
+}
+
+.info-block:hover {
+    background: #eee;
+}
+
+.info-block:hover i.fa {
+    color: #D94C3A;
+}
+
+.info-block a.more {
+    display: inline-block;
+    border-radius: 4px 4px 0 0;
+    background: #D94C3A;
+    padding: 5px 8px;
+    text-decoration: none;
+    color: #fff;
+    transition:all 0.4s;
+    border: 0;
+}
+
+.info-block a.more:hover {
+    background: #ddd;
+    color: #D94C3A;
+}
+
+#us, #data-container {
+    width: 90%;
+    max-width: 1000px;
+    background: #eee;
+    margin: 0 auto;
+    border-radius: 4px;
+    padding: 1px 0 20px;
+}
+#data-container > div {
+    margin: 0 20px;
+}
+
+#us {
+    background: #bbb;
+    margin: 20px auto;
+}
+
+#block-why-us {
+    float: left;
+}
+
+.margin-as-padding {
+    margin: 10px 20px;
+}
+
+#block-services {
+    float: right;
+}
+
+/* - - - - */
+
+#footer {
+    background: url(../img/footer_bg.png);
+    border-top: 9pt solid #000;
+    width: 90%;
+    max-width: 1000px;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 4px 4px 0 0;
+    color: #bbb;
+}
+
+#footer a {
+    color: #ccc;
+    border-bottom: 1px solid #D94C3A;
+}
+
+#footer a:hover {
+    border-bottom-color: #666;
+}
+
+#footer .linklist {
+    margin-top: 20px;
+    text-align: center;
+}

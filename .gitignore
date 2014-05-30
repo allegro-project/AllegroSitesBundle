@@ -1,0 +1,6 @@
+*~
+/phpunit.xml
+/vendor/
+/Tests/kernel/cache
+/Tests/kernel/logs
+/Tests/Controller

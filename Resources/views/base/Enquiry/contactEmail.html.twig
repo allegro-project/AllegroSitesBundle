@@ -1,0 +1,37 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+<html>
+    <body style="background:#eee; margin:0; padding:20px; text-align:center; font-size:125%">
+        <table style="background:#ddd; border: 3px solid #888; text-align:left; font-weight:bold;" cellpadding="0">
+        <tr style="background:#ccc;">
+            <td colspan="2" style="text-align:center;">Contact Enquiry ({{ lang }})</td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td>{{ "now" | date("Y-m-d H:i") }}</td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>{{ enquiry.name }}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{ enquiry.email }}</td>
+        </tr>
+        <tr>
+            <td>Subject:</td>
+            <td>{{ enquiry.subject }}</td>
+        </tr>
+        <tr><td colspan="2">Body:</td></tr>
+        <tr><td colspan="2">{{ enquiry.body }}</td></tr>
+        </table>
+    </body>
+</html>

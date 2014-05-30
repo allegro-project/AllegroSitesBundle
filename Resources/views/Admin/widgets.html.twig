@@ -1,0 +1,86 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{# Template added through the admin classes #}
+{% block collection_widget_row %}
+{% spaceless %}
+        <div class="sonata-collection-row">
+        {% if allow_delete %}
+            <a href="#" class="btn sonata-collection-delete"><i class="fa fa-minus-circle"></i></a>
+        {% endif %}
+        {% if child.vars.name == '__asb-nolabel__' %}
+            {{ form_row(child)|replace({'__asb-nolabel__label__': ''})|raw }}
+        {% else %}
+            {{ form_row(child) }}
+        {% endif %}
+        </div>
+{% endspaceless %}
+{% endblock %}
+
+{% block allg_static_text_widget %}
+    {% spaceless %}
+        <div class="sonata-ba-field sonata-ba-field-standard-natural">{{ value }}</div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block allg_site_tree_widget %}
+{% spaceless %}
+    {% if prototype is defined %}
+        {% set child = prototype %}
+        {% set attr = attr|merge({'data-prototype': block('collection_widget_row'), 'data-prototype-name': prototype.vars.name, 'class': attr.class|default('') }) %}
+    {% endif %}
+    <div {{ block('widget_container_attributes') }}>
+        {{ form_errors(form) }}
+        {% if data %}
+        <ol class="sortable-menu">
+            {% for page in data.getFirstPages %}
+                {{ block('allg_site_tree_item_widget_row') }}
+            {% endfor %}
+        </ol>
+        {% endif %}
+        {{ form_rest(form) }}
+    </div>
+{% endspaceless %}
+{% endblock %}
+
+{% block allg_site_tree_item_widget_row %}
+{% spaceless %}
+    <li data-id="{{ page.getId }}">
+        {{ page.getMainTranslation.getTitle }}
+        <br>
+        <small>{{ page.getMainTranslation.getDescription }}</small>
+        <br>
+        <a href="{{ path('admin_allegro_sites_site_page_edit', {'id' : page.getSite.getId, 'childId' : page.id}) }}">Edit</a>
+        &nbsp; &middot; &nbsp;
+        <a href="{{ path('AllegroSites_page', { 'site': page.getSite.getSlug, 'page': page.getMainTranslation.getSlug }) }}">View</a>
+        &nbsp; &middot; &nbsp;
+        <a href="{{ path('admin_allegro_sites_site_page_create_page', {'id' : page.getSite.getId, 'parentId' : page.getId}) }}">Add page</a>
+        &nbsp; | &nbsp;
+        <a class="warning" href="{{ path('admin_allegro_sites_site_page_delete', {'id' : page.getSite.getId, 'childId' : page.getId, 'ref': 'tree'}) }}">delete</a>
+        <ol>
+        {% set current = page %}
+        {% for child in page.getChildren(true) %}
+            {% set page = child %}
+            {{ block('allg_site_tree_item_widget_row') }}
+        {% endfor %}
+        {% set page = current %}
+        </ol>
+    </li>
+{% endspaceless %}
+{% endblock %}
+
+{% block allg_static_link_widget %}
+    {% spaceless %}
+    <div class="sonata-ba-field sonata-ba-field-standard-natural">
+    <a href="{{ path(route, params) }}">{{ data }}</a>
+    </div>
+    {% endspaceless %}
+{% endblock %}
+

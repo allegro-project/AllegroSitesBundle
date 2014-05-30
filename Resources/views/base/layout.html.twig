@@ -1,0 +1,93 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% extends allg_template('base.html') %}
+
+{% block metas %}
+    <meta name="Author" content="Arturo Rodríguez">
+    <meta name="description" content="fugadigital">
+    <meta name="keywords" content="fugadigital, development, desarrollo">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        filter='cssrewrite'
+        output='css/gen_base_lo.css'
+        'bundles/allegrosites/base/css/normalize.css'
+        'bundles/allegrosites/base/css/sticky_footer.css'
+        'bundles/allegrosites/base/css/layout.css'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+    <link rel='stylesheet' id='lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic' type='text/css' media='all' />
+{% endblock stylesheets %}
+
+{% block body %}
+    {% block login_link %}
+    <div id="login-link">
+        {% include allg_template('user_login.html') %}
+    </div>
+    {% endblock %}
+
+    <header id="header">
+        <div id="notices">
+            <noscript>
+                <div class="notice">{% trans %}layout.nojavascript{% endtrans %}</div>
+            </noscript>
+            <!--[if IE]>
+                <div class="notice">
+                    {% trans %}layout.ieNotice{% endtrans %}
+                </div>
+            <![endif]-->
+        </div>
+
+        {% block navigation %}
+        <nav id="mainmenu">
+            {{ render(controller("AllegroSitesBundle:Menu:menu")) }}
+        </nav>
+        {% endblock %}
+    </header>
+
+    <div id="container">
+        <section class="main-col">
+        {% block main_content 'layout.block.main_content' %}
+        </section>
+
+        {% block sidebar_container %}
+        <aside class="sidebar">
+            {% block sidebar %}{% endblock %}
+        </aside>
+        {% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+        <div class="linklist">
+            <a href="{{ allg_url('sitemap') }}">{% trans %}layout.label.sitemap{% endtrans %}</a>
+            <br>
+            <a href="{{ allg_url('contact') }}">{% trans %}layout.label.contact{% endtrans %}</a>
+        </div>
+
+        <div class="linklist">
+            <a href="https://github.com/fugadigital/AllegroSitesBundle/">Allegro CMS source</a>
+            <br>
+            <a href="http://symfony.com">Symfony powered</a>
+        </div>
+
+        <br>
+        <br>
+        <div class="linklist">
+            <small>{{ 'now' | date('Y') }} &copy; YourSite. &nbsp; Design:<a href="http://fugadigita.com">fugadigital.com</a></small>
+        </div>
+        {% endblock footer %}
+    </div>
+{% endblock body %}

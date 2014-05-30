@@ -1,0 +1,31 @@
+layout:
+    message:
+        nojavascript: You can use this site without javascript but you'll miss some enhancements
+        ieNotice: If possible use a serious browser like Firefox, Chrome, Opera, etc
+    label:
+        welcome: Welcome!
+        logout: Log out
+        sitemap: Sitemap
+        contact: Contact
+
+sitemap:
+    title: Sitemap
+
+contact:
+    page:
+        contact: Contact
+    form:
+        name:
+            label: Name
+        email:
+            label: Email
+        subject:
+            label: Subject
+        body:
+            label: Content
+        captcha:
+            label: Captcha
+        submit:
+            label: Submit
+        response:
+            success: Your message has been sent. Thanks!

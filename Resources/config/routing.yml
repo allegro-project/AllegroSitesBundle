@@ -1,0 +1,46 @@
+# # # SITE MAP # # #
+
+AllegroSites_sitemap:
+    path:  /{site}/{_locale}/map
+    defaults: { _controller: AllegroSitesBundle:Site:sitemap }
+
+AllegroSites_sitemap_nolocale:
+    path:  /{site}/map
+    defaults: { _controller: AllegroSitesBundle:Site:sitemap }
+
+# # # CONTACT PAGE # # #
+
+AllegroSites_contact:
+    path:  /{site}/{_locale}/contact
+    defaults: { _controller: AllegroSitesBundle:Enquiry:contact }
+
+AllegroSites_contact_nolocale:
+    path:  /{site}/contact
+    defaults: { _controller: AllegroSitesBundle:Enquiry:contact }
+
+# # # PAGE ACCESS # # #
+
+AllegroSites_page:
+    path: /{site}/{_locale}/{page}
+    defaults: { _controller: AllegroSitesBundle:Page:show }
+
+# # # SITE ROOT / LANDING PAGE ACCESS # # #
+
+AllegroSites_landingpage:
+    path: /{site}/{_locale}
+    defaults: { _controller: AllegroSitesBundle:Page:landingPage }
+
+AllegroSites_landingpage_nolocale:
+    path:  /{site}
+    defaults: { _controller: AllegroSitesBundle:Page:landingPage }
+
+# # # BROKEN ACCESS # # #
+
+AllegroSites_broken:
+    path: /{site}{extra}
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: AllegroSites_landingpage_nolocale
+        permanent: false
+    requirements:
+        extra: .+

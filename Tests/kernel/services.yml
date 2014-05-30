@@ -1,0 +1,30 @@
+parameters:
+    # empty param to be set by
+    allegro_sites.format.urls: ~
+
+services:
+    allegro_sites.listener.CRUD:
+        class: Allegro\SitesBundle\EventListener\CRUDListener
+        # circular reference if sending @security.context
+        arguments: [ @service_container ]
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: onFlush }
+            - { name: doctrine.event_listener, event: postLoad }
+
+    allegro_sites.listener.session:
+        class: Allegro\SitesBundle\EventListener\SessionListener
+        arguments: [ '@doctrine.orm.entity_manager' ]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    allegro_sites.helper.routing:
+        class: Allegro\SitesBundle\Util\RoutingHelper
+        arguments: [ '@router', '@session', '@doctrine.orm.entity_manager', %allegro_sites.format.urls% ]
+
+    allegro_sites.twig.extension:
+        class: Allegro\SitesBundle\Twig\Extension\AllegroSitesExtension
+        #~ arguments: [ '@allegro_sites.helper.routing', '@templating', '@session' ]
+        arguments: [ '@allegro_sites.helper.routing', '@service_container' ]
+        tags:
+            - { name: twig.extension }

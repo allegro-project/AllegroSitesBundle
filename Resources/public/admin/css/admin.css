@@ -1,0 +1,83 @@
+html, body {
+    background: rgb(177,177,177);
+}
+.content-header, .content {
+  background-color:rgb(177,177,177) !important;
+}
+.box.box-success {
+    border-top-color: #459ACF;
+    background:#f6f6f6;
+}
+.skin-black .navbar {
+    background:#f6f6f6;
+    border-bottom: 1px solid #459ACF;
+}
+.skin-black .navbar .breadcrumb > li > a:hover {
+    color: rgb(68, 68, 68);
+    box-shadow: 0px 8px 6px -6px #888;
+}
+
+.alert {
+    background-color:#f0f0f;
+    color:#333;
+}
+.alert-error {
+    border:2pt solid rgb(245, 105, 84);
+    background-color:#f0e0d;
+    color:#333;
+}
+
+/* ******* tables ******* */
+.sonata-ba-view-title, .sonata-ba-view-container {
+    background:#fff;
+}
+div.field-container table {
+    background:#f9f9f9;
+}
+
+/* ******* form elements ******* */
+input, button, select, textarea {
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    background: #fcfcfc;
+}
+input, textarea {
+    padding: .1em .3em;
+}
+
+.form-horizontal .control-label {
+    padding-top: 0px;
+}
+/* ******************** */
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+/* Pages tree */
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.sortable-menu li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.sortable-menu li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+ol.sortable-menu li {
+  border: .1em solid #eee;
+  margin: .75em .2em;
+  padding: .3em;
+  border-radius: 5px;
+}
+ol.sortable-menu li:hover {
+  background-color: rgb(222,222,222);
+  background-color: rgba(188,188,188,.1);
+}
+ol.sortable-menu, ol.sortable-menu ol {
+    list-style-type: none;
+}

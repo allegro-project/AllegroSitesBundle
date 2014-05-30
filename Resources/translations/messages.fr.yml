@@ -1,0 +1,31 @@
+layout:
+    message:
+        nojavascript: Vous pouvez utiliser ce site sans Javascript, mais vous manquez quelques améliorations
+        ieNotice: Si possible utilisez un navigateur sérieux comme Firefox, Chrome, Opera, etc
+    label:
+        welcome: Bienvenue!
+        logout: Déconnecter
+        sitemap: Plan du site
+        contact: Contacter
+
+sitemap:
+    title: Plan du site
+
+contact:
+    page:
+        contact: Contacter
+    form:
+        name:
+            label: Nom
+        email:
+            label: Courriel
+        subject:
+            label: Sujet
+        body:
+            label: Contenu
+        captcha:
+            label: Vérification
+        submit:
+            label: Envoyer
+        response:
+            success: Ton message a été envoyé. Merci!

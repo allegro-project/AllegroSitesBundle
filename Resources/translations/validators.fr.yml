@@ -1,0 +1,11 @@
+contact:
+    form:
+        name:
+            message: Invalid name
+        email:
+            message: Sorry that doesn't look as an email
+        subject:
+            message: This fiel cannot be empty
+            maxMessage: Value too long, it can contain a maximum of {{ limit }} characters
+        body:
+            minMessage: Value too short, it can contain a minimum of {{ limit }} characters

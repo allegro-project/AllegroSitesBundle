@@ -1,0 +1,27 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% if pages is not empty %}
+{% for page in pages %}
+<li class="page">
+	<a href="{{ allg_url(page) }}">{{ page.getTranslationByLang(_locale).getTitle }}</a>
+	{% if page.description %}<br><span class="note">{{ page.description }}</span>{% endif %}
+
+	{% if page.children is not empty %}
+	<ul>
+            {%
+                include allg_template('Site:map_page.html')
+                with { 'pages': page.children, '_locale': _locale } only
+            %}
+	</ul>
+	{% endif %}
+</li>
+{% endfor %}
+{% endif %}

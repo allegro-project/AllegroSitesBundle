@@ -1,0 +1,31 @@
+layout:
+    message:
+        nojavascript: Du kan använda den här webbplatsen utan javascript, men du kommer att sakna en del förbättringar
+        ieNotice: Om möjligt använder en allvarlig webbläsare som Firefox, Chrome, Opera, etc
+    label:
+        welcome: Välkommen!
+        logout: ogga ut
+        sitemap: Sitemap
+        contact: Kontakt
+
+sitemap:
+    title: Sitemap
+
+contact:
+    page:
+        contact: Kontakt
+    form:
+        name:
+            label: Namn
+        email:
+            label: Epost
+        subject:
+            label: Ämne
+        body:
+            label: Innehåll
+        captcha:
+            label: Captcha
+        submit:
+            label: Skicka
+        response:
+            success: Ditt meddelande har skickats. Tack!

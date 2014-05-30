@@ -1,0 +1,34 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{%block doctype '<!DOCTYPE html>' %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <title>{% block title %}{% trans %}layout.label.welcome{% endtrans %}{% endblock %}</title>
+
+        {% block metas '' %}
+
+        {% block stylesheets '' %}
+
+        <link rel="shortcut icon" href="{% block favicon_location %}{{ asset('bundles/allegrosites/base/img/favicon.png') }}{% endblock %}">
+
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+        {% block body 'base.block.body' %}
+        {% block javascripts %}
+            <!--[if lt IE 9]>
+                <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        {% endblock %}
+    </body>
+</html>

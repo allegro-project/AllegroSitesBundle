@@ -1,0 +1,54 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{# Available vars:
+    page:           The page entity
+    translation:    The current translation
+    children:       array(PageTranslation) translations of children
+    localeRoutes:   array(lang=>route)
+    breadcrumbs:    array(Page)
+#}
+{% extends allg_template('layout.html') %}
+
+{% block title %}{{ translation.getTitle }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        filter='cssrewrite'
+        output='css/gen_corporatex_page.css'
+        'bundles/allegrosites/corporatex/css/page.css'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen">
+    {% endstylesheets %}
+{% endblock stylesheets %}
+
+{% block head %}
+    {{ page.head|raw }}
+{% endblock %}
+
+{% block main_content %}
+    <article class="main">
+        {% if children %}
+        <p id="children-page-links">
+            {% for child in children %}
+            <a href="{{ allg_url(child.getPage) }}">{{ child.getTitle }}</a>
+            {% endfor %}
+        </p>
+        {% endif %}
+
+        <div>
+            <p>{{ translation.getBody|allg_page }}</p>
+            <p></p>
+        </div>
+    </article>
+{% endblock main_content %}
+
+{% block sidebar_container '' %}

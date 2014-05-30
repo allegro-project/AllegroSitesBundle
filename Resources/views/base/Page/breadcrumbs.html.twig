@@ -1,0 +1,22 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+<div id="breadcrumbs">
+{% if breadcrumbs | length > 1 %}
+{% for crumb in breadcrumbs %}
+    {% if loop.index > 1 %}&raquo;{% endif %}
+    {% if loop.index < breadcrumbs | length %}
+        <a href="{{ allg_url(crumb.getPage) }}">{{ crumb.getTitle }}</a>
+    {% else %}
+        {{ crumb.title }}
+    {% endif %}
+{% endfor %}
+{% endif %}
+</div>

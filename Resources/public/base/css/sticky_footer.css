@@ -1,0 +1,15 @@
+/* http://mystrd.at/modern-clean-css-sticky-footer/ */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 170px; /* bottom = footer height // + some margin */
+}
+#footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+}

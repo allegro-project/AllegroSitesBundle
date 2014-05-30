@@ -1,0 +1,56 @@
+services:
+    allegro_sites.admin.site:
+        class: Allegro\SitesBundle\Admin\SiteAdmin
+        arguments:
+            - ~
+            - Allegro\SitesBundle\Entity\Site
+            - 'AllegroSitesBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [ AllegroSitesBundle ] ]
+            - [ setServiceContainer, [ @service_container ] ]
+            - [ addChild, [ @allegro_sites.admin.page ] ]
+            # custom templates
+            # adds code editor
+            - [ setTemplate, [ layout, AllegroSitesBundle:Admin:standard_layout.html.twig ] ]
+            # removes some buttons on create new instance
+            - [ setTemplate, [ edit,   AllegroSitesBundle:Admin:form_actions.html.twig ] ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Allegro Sites", label: "Sites" }
+
+    allegro_sites.admin.site_translation:
+        class: Allegro\SitesBundle\Admin\SiteTranslationAdmin
+        arguments:
+            - ~
+            - Allegro\SitesBundle\Entity\SiteTranslation
+            - ~
+        calls:
+            - [ setTranslationDomain, [ AllegroSitesBundle ] ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Allegro Sites", label: "Site translations" }
+
+    allegro_sites.admin.page:
+        class: Allegro\SitesBundle\Admin\PageAdmin
+        arguments:
+            - ~
+            - Allegro\SitesBundle\Entity\Page
+            - 'AllegroSitesBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [ AllegroSitesBundle ] ]
+            - [ setServiceContainer, [ @service_container ] ]
+            # adds code editor
+            - [ setTemplate, [ layout, AllegroSitesBundle:Admin:standard_layout.html.twig ] ]
+            # removes some buttons on create new instance
+            - [ setTemplate, [ edit,   AllegroSitesBundle:Admin:form_actions.html.twig ] ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Allegro Sites", label: "Pages", show_in_dashboard: false }
+
+    allegro_sites.admin.content:
+        class: Allegro\SitesBundle\Admin\PageTranslationAdmin
+        arguments:
+            - ~
+            - Allegro\SitesBundle\Entity\PageTranslation
+            - ~
+        calls:
+            - [ setTranslationDomain, [ AllegroSitesBundle ] ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Allegro Sites", label: "Page translations", show_in_dashboard: false }

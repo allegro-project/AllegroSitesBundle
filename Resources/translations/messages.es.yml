@@ -1,0 +1,31 @@
+layout:
+    message:
+        nojavascript: Este sitio es totalmente funcional sin Javascript pero te perderas algunas mejoras
+        ieNotice: De ser posible utiliza un navegador más serio como Firefox, Chrome, Opera, etc
+    label:
+        welcome: ¡Bienvenido!
+        logout: Terminar sesión
+        sitemap: Mapa del sitio
+        contact: Contacto
+
+sitemap:
+    title: Mapa del sitio
+
+contact:
+    page:
+        contact: Contacto
+    form:
+        name:
+            label: Nombre
+        email:
+            label: Correo
+        subject:
+            label: Tema
+        body:
+            label: Contenido
+        captcha:
+            label: Verificación
+        submit:
+            label: Enviar
+        response:
+            success: Tu mensaje se ha enviado. ¡Gracias!

@@ -1,0 +1,19 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% if routes|length > 1 %}
+<div id="other-langs">
+{% for locale, route in routes %}
+    {% if loop.index == 1 %}[{% endif %}
+    <a href="{{ route }}">{{ locale }}</a>
+    {% if loop.index == routes | length %}]{% endif %}
+{% endfor %}
+</div>
+{% endif %}

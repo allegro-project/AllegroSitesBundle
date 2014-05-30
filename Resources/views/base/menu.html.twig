@@ -1,0 +1,43 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{# #}
+{% macro menu_links(pages, _locale) %}
+    {% import _self as macros %}
+    {% for page in pages %}
+        <li>
+            <a href="{{ allg_url(page) }}">{{ page.getTranslationByLang(_locale).title }}</a>
+            {% if page.children|length > 0 %}
+                <ul>
+                    {{ macros.menu_links(page.children, _locale) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% else %}
+        <li><a>~</a></li>
+    {% endfor %}
+{% endmacro %}
+
+{% import _self as macros %}
+
+<ul class="navigation">
+    {{ macros.menu_links(site.getFirstPages, _locale) }}
+</ul>
+{# # }
+<ul class="navigation">
+{% for page in site.getFirstPages %}
+    <li>{% spaceless %}
+        <a href="{{ allg_url(page) }}">{{ page.getTranslationByLang(_locale).title }}</a>
+    {% endspaceless %}</li>
+{% else %}
+    <li>~ ~ ~</li>
+{% endfor %}
+</ul>
+{# #}

@@ -1,0 +1,15 @@
+{% if app.user.username is defined %}
+    {# Check if admin impersonating a user #}
+    {% for role in app.security.token.roles %}
+        {% if role.source is defined %}
+            {{ role.source.user.username }}
+            <a href="{{ (app.request.getRequestUri ~ '?_switch_user=_exit') }}">return</a> |
+        {% endif %}
+    {% endfor %}
+
+    {% if is_granted("ROLE_ADMIN") %}(Admin){% endif %}
+    {{ app.user.username }}<br>
+    <a href="{{ path('sonata_user_admin_security_logout') }}">{% trans %}layout.label.logout{% endtrans %}</a>
+{% else %}
+    <a href="{{ path('sonata_user_admin_security_login') }}">login</a>
+{% endif %}

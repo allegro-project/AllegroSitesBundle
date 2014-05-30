@@ -1,0 +1,33 @@
+.main .page_image {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.main .updated {
+    font-size:70%;
+    float: right;
+    color: #888;
+}
+
+#breadcrumbs {
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#breadcrumbs a {
+    text-decoration: none;
+    border-bottom: 1px solid #D94C3A;
+    font-weight: normal;
+    color: #333;
+}
+
+#children-page-links a {
+    display: inline-block;
+    background: #ccc;
+    border-bottom: 0;
+    padding: 1pt 7pt;
+    text-transform: capitalize;
+    font-variant: small-caps;
+}

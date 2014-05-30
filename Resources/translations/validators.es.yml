@@ -1,0 +1,11 @@
+contact:
+    form:
+        name:
+            message: Nombre inválido
+        email:
+            message: Esto no parece de un correo electrónico
+        subject:
+            message: Este campo no puede estar vacío
+            maxMessage: El texto puede tener como máximo {{ limit }} caracteres
+        body:
+            minMessage: El texto puede tener como mínimo {{ limit }} caracteres

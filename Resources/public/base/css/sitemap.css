@@ -1,0 +1,26 @@
+#sitemap {
+	margin:10px 20px;
+}
+
+#sitemap li {
+	margin:10px 20px;
+}
+
+#sitemap li.page a {
+	border-bottom:1px dotted transparent;
+	font-size:150%;
+	display:inline-block;
+	margin:-5px 0 0 -10px;
+	text-shadow: 0.1em 0.1em 0.2em #808080;
+	color:#444;
+}
+
+#sitemap li.page a:hover {
+	border-bottom:1px dotted #459acf;
+}
+
+#sitemap li .note {
+	color:#333;
+	font-size:80%;
+	font-weight:bold;
+}

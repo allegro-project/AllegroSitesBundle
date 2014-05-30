@@ -1,0 +1,58 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{# Available vars:
+    site:           The site entity
+    _locale:        Current locale like 'en' or 'es'
+    localeRoutes:   array([lang=>route])
+    form:           The form object
+#}
+{% extends allg_template('layout.html') %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        filter='cssrewrite'
+        output='css/gen_base_enquiry.css'
+        'bundles/allegrosites/base/css/contact.css'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen">
+    {% endstylesheets %}
+{% endblock stylesheets %}
+
+{% block title %}{% trans %}contact.page.contact{% endtrans %}{% endblock %}
+
+{% block main_content %}
+    {%
+        include allg_template('locale_links.html')
+        with { 'routes': localeRoutes } only
+    %}
+
+    <h1>{% trans %}contact.page.contact{% endtrans %}</h1>
+
+    {% for flashMessage in app.session.flashbag.get('allegro-notice') %}
+    <div class="allegro-notice">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+
+    {%
+        include allg_template('Enquiry:contact_form.html')
+        with { 'site': site, '_locale': _locale, 'form': form } only
+    %}
+    <br>
+    <br>
+{% endblock %}
+
+{% block sidebar %}
+<b>Lorem ipsum dolor sit amet</b>, <i>consectetur adipiscing elit</i>. Integer nec
+odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at
+nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus
+{% endblock %}

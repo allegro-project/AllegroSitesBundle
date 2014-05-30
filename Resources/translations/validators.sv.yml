@@ -1,0 +1,11 @@
+contact:
+    form:
+        name:
+            message: Ogiltigt namn
+        email:
+            message: Tyvärr som inte ser som ett epost
+        subject:
+            message: Detta fält kan inte vara tomt
+            maxMessage: Värde för lång, kan den innehålla maximalt {{limit}} tecken
+        body:
+            minMessage: Värde för kort, kan den innehålla minst {{limit}} tecken

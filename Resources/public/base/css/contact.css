@@ -1,0 +1,62 @@
+.allegro-notice { text-align: center; padding: 10px; background: #DFF2BF; border: 1px solid; color: #4F8A10; margin-bottom: 10px; }
+form.allegro { font-size: 16px; }
+form.allegro div { clear: left; margin-bottom: 10px; }
+form.allegro label { float: left; margin-right: 10px; text-align: right; width: 100px; font-weight: bold; vertical-align: top; padding-top: 10px; }
+
+form.allegro input[type="text"],
+form.allegro input[type="email"],
+form.allegro input[type="submit"],
+form.allegro textarea {
+    width: 500px;
+}
+
+@media all and (max-width: 800px) {
+    form.allegro input[type="text"],
+    form.allegro input[type="email"],
+    form.allegro input[type="submit"],
+    form.allegro textarea {
+        width: 100%;
+    }
+}
+
+form.allegro input[type="text"],
+form.allegro input[type="email"] {
+    line-height: 26px;
+    font-size: 20px;
+    min-height: 26px;
+}
+
+form.allegro textarea {
+    height: 150px;
+    line-height: 26px;
+    font-size: 20px;
+}
+
+form.allegro input[type="submit"] {
+    margin-left: 110px;
+    line-height: 26px;
+    font-size: 20px;
+    min-height: 26px;
+}
+
+form.allegro ul li { color: #ff0000; margin-bottom: 5px; }
+
+.captcha_reload {
+	border: 1px solid #aaa;
+	display:inline-block;
+	margin:-15px 10px 10px 10px;
+	padding: 5px;
+	border-radius: 4px;
+	vertical-align:middle;
+    background: #f0f0f0; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#ededed), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+.captcha_reload:hover {
+	background:#eee;
+}

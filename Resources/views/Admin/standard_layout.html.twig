@@ -1,0 +1,48 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/allegrosites/admin/css/admin.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/allegrosites/admin/css/codemirror.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/allegrosites/admin/css/codemirror-themes/mdn-like.css') }}" type="text/css" media="all" />
+    <style type="text/css">
+      .CodeMirror-matchingtag { background: rgba(0, 150, 255, .3); }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/allegrosites/admin/js/jquery-sortable-min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/allegrosites/admin/js/codemirror-min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/allegrosites/admin/js/admin.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block logo %}
+    <a href="{{ url('sonata_admin_dashboard') }}" class="logo">
+        <img src="{{ asset('bundles/allegrosites/admin/img/logo.png') }}"  alt="Allegro Sites" />
+        Allegro Sites
+    </a>
+{% endblock %}
+
+{% block side_bar_after_nav %}
+    <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 10px">
+        <a href="https://github.com/fugadigital/AllegroSitesBundle/" rel="noreferrer" target="_blank">Latest source code</a>
+    </p>
+    <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 10px">
+        <a href="http://fugadigital.com" rel="noreferrer" target="_blank">fugadigital</a>
+    </p>
+    <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 10px">
+        <a href="http://sonata-project.org" rel="noreferrer" target="_blank">Sonata Project powered</a>
+    </p>
+{% endblock %}

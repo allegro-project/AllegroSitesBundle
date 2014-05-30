@@ -1,0 +1,44 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{# Available vars:
+    site:           The site entity
+    _locale:        Current locale like 'en' or 'es'
+    localeRoutes:   array([lang=>route])
+#}
+{% extends allg_template('layout.html') %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        filter='cssrewrite'
+        output='css/gen_corporatex_map.css'
+        'bundles/allegrosites/corporatex/css/sitemap.css'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen">
+    {% endstylesheets %}
+{% endblock stylesheets %}
+
+{% block title %}{{ site.title }}{% endblock%}
+
+{% block main_content %}
+    <article class="main">
+        <h1 class="sitemap">{{ site.title }}</h1>
+        {% if site.description %}<h3>{{ site.description }}</h3>{% endif %}
+
+        <br>
+        <ul id="sitemap">
+            {%
+                include allg_template('Site:map_page.html')
+                with { 'pages': site.getFirstPages, '_locale': _locale } only
+            %}
+        </ul>
+    </article>
+{% endblock %}

@@ -1,0 +1,4 @@
+AllegroSitesBundle:
+    resource: "@AllegroSitesBundle/Controller/"
+    type:     annotation
+    prefix:   /
