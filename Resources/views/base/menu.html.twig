@@ -28,7 +28,9 @@ file that was distributed with this source code.
 {% import _self as macros %}
 
 <ul class="navigation">
-    {{ macros.menu_links(site.getFirstPages, _locale) }}
+    {% if site is not null %}
+        {{ macros.menu_links(site.getFirstPages, _locale) }}
+    {% endif %}
 </ul>
 {# # }
 <ul class="navigation">

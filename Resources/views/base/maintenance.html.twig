@@ -1,0 +1,45 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{# Available vars:
+    page:           The page entity
+    translation:    The current translation
+    children:       array(PageTranslation) translations of children
+    localeRoutes:   array(lang=>route)
+    breadcrumbs:    array(Page)
+#}
+{% extends allg_template('layout.html') %}
+
+{% block title %}4 0 4{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+
+{% block head %}
+{% endblock %}
+
+{% block main_content %}
+    <article class="error">
+        <header>
+            {%
+                include allg_template('locale_links.html')
+                with { 'routes': localeRoutes } only
+            %}
+        {% block navigation '' %}
+
+            <h1>Under maintenance</h1>
+
+            <h2>The site is getting even more awesome, just give us a little time.</h2>
+        </header>
+    </article>
+{% endblock main_content %}
+
+{% block sidebar_container '' %}

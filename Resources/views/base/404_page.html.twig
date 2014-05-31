@@ -9,7 +9,7 @@ file that was distributed with this source code.
 
 #}
 {# Available vars:
-    page:           The page entity
+    resourceSlug:   The resource slug
     translation:    The current translation
     children:       array(PageTranslation) translations of children
     localeRoutes:   array(lang=>route)
@@ -21,13 +21,6 @@ file that was distributed with this source code.
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets
-        filter='cssrewrite'
-        output='css/gen_corporatex_404.css'
-        'bundles/allegrosites/corporatex/css/404.css'
-    %}
-        <link href="{{ asset_url }}" rel="stylesheet" media="screen">
-    {% endstylesheets %}
 {% endblock stylesheets %}
 
 {% block head %}
@@ -41,9 +34,9 @@ file that was distributed with this source code.
                 with { 'routes': localeRoutes } only
             %}
 
-            <h1>4 0 4</h1>
-
-            <h2>Ermahgerd!!</h2>
+            <h1>Ermahgerd a 404</h1>
+            <p>&nbsp;</p>
+            <h2>Are you sure {{ resourceSlug }} is a real thing?</h2>
         </header>
     </article>
 {% endblock main_content %}
