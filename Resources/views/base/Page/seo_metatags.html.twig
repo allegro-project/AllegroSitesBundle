@@ -1,0 +1,29 @@
+{#
+
+This file is part of the Allegro Package.
+
+(c) Arturo Rodríguez <arturo@fugadigital.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{# Available vars:
+    page:           The page entity
+    translation:    The current translation
+#}
+<link rel="canonical" href="{{ path(app.request.attributes.get('_route'), { 'site': page.getSite.getSlug, 'page': translation.getSlug }) }}" />
+<meta property="og:url" content="{{ path(app.request.attributes.get('_route'), { 'site': page.getSite.getSlug, 'page': translation.getSlug }) }}" />
+<meta property="og:locale" content="{{ translation.getLang }}" />
+<meta property="og:type" content="website" />
+{#<meta property="article:published_time" content="{{ translation.getLastModified | date('Y-m-d\\TH:i:sP') }}" />#}
+<meta property="og:site_name" content="{{ page.getSite.getSlug }}" />
+{% if translation.getSeoTitle is not null %}
+<meta property="og:title" content="{{ translation.getSeoTitle }}" />
+{% endif %}
+{% if translation.getSeoMetaDescription is not null %}
+<meta property="og:description" content="{{ translation.getSeoMetaDescription }}" />
+{% endif %}
+{% if translation.description is not null %}
+<meta name="description" content="{{ translation.description }}" />
+{% endif %}

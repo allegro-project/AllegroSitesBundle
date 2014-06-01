@@ -31,6 +31,10 @@ file that was distributed with this source code.
 {% endblock stylesheets %}
 
 {% block head %}
+    {%
+        include allg_template('Page:seo_metatags.html')
+        with { 'page': page, 'translation': translation } only
+    %}
     {{ page.head|raw }}
 {% endblock %}
 
