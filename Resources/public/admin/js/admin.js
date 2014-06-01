@@ -1,5 +1,9 @@
 /**
  * Converts a string into a web slug
+ * 
+ * @param {string} value
+ * @param {boolean} showDate
+ * @returns {string}
  */
 function slugify(value, showDate) {
     value = value.trim().toLowerCase();
@@ -39,7 +43,9 @@ function setSlug(input) {
  * Clones an admin widget block (label + field). Clone and its children id, name
  * and for attributes are suffixed. Clone is inserted after cloned block.
  * 
- * @return the cloned (div) block
+ * @param {string} block
+ * @param {string} idSuffix
+ * @returns {blockClone.newLinkCont} the cloned (div) block
  */
 function blockClone(block, idSuffix) {
     var contToClone = $($('div.form-group[id*="' + block + '"]')[0]);
@@ -47,7 +53,7 @@ function blockClone(block, idSuffix) {
     newLinkCont.find('.CodeMirror').remove();
 
     if (newLinkCont.attr('id')) {
-        newLinkCont.attr('id', newLinkCont.attr('id')   + idSuffix);
+        newLinkCont.attr('id', newLinkCont.attr('id') + idSuffix);
     }
     if (newLinkCont.attr('name')) {
         newLinkCont.attr('name', newLinkCont.attr('name') + idSuffix);
@@ -72,8 +78,9 @@ function blockClone(block, idSuffix) {
 /**
  * Replaces a textarea with an input field
  * 
- * @param string ta Textarea's ending id
- * @param array attributes to copy from textarea to input
+ * @param {string} ta Textarea's ending id
+ * @param {Array} attributes to copy from textarea to input
+ * @returns {undefined}
  */
 function textareaToInput(ta, attributes) {
     var textarea = $('textarea[id*="' + ta + '"]');
@@ -109,7 +116,7 @@ function blockFind(nodeName, id, suffix) {
 
 function showPageTypeFields(type) {
     var cloneSuffix = '_clone';
-    if (null == blockFind('div', '_body', cloneSuffix)) {
+    if (null === blockFind('div', '_body', cloneSuffix)) {
         var clone = blockClone('_body', cloneSuffix);
         changeLabel('_body' + cloneSuffix, 'Link');
         textareaToInput('_body' + cloneSuffix, [ 'id', 'name' ]);
@@ -126,12 +133,12 @@ function showPageTypeFields(type) {
     input = $(linkBlock.find('input')[0]);
     switchAttributes(textarea, input, ['id', 'name']);
 
-    if ('l' == type) {
+    if ('l' === type) {
         blockSetVisible(headBlock, false);
         blockSetVisible(linkBlock, true);
         blockSetVisible(bodyBlock, false);
     }
-    else if ('p' == type) {
+    else if ('p' === type) {
         blockSetVisible(headBlock, true);
         blockSetVisible(linkBlock, false);
         blockSetVisible(bodyBlock, true);
@@ -143,7 +150,7 @@ function showPageTypeFields(type) {
 $(document).ready(function() {
     $('textarea.page-code').click(function() {
         var cssDisp = $(this).css('display');
-        if (cssDisp !== 'hidden' && cssDisp != 'none') {
+        if (cssDisp !== 'hidden' && cssDisp !== 'none') {
             transformToEditor(this);
         }
     });
@@ -160,6 +167,11 @@ $(document).ready(function() {
     });
 });
 
+/**
+ * 
+ * @param {type} textarea
+ * @returns {editor}
+ */
 function transformToEditor(textarea) {
     editor = CodeMirror.fromTextArea(textarea, {
         mode: "application/x-httpd-php",
@@ -167,6 +179,7 @@ function transformToEditor(textarea) {
         theme: "mdn-like",
         styleActiveLine: true,
         matchBrackets: true,
+        lineWrapping: true,
         matchTags: {bothTags: true},
         extraKeys: {
             "Tab": function(cm){
@@ -174,4 +187,6 @@ function transformToEditor(textarea) {
             }
         }
     });
+
+    return editor;
 }
