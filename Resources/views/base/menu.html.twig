@@ -12,6 +12,7 @@ file that was distributed with this source code.
 {% macro menu_links(pages, _locale) %}
     {% import _self as macros %}
     {% for page in pages %}
+        {% if page.getEnabled and page.getVisible %}
         <li>
             <a href="{{ allg_url(page) }}">{{ page.getTranslationByLang(_locale).title }}</a>
             {% if page.children|length > 0 %}
@@ -20,6 +21,7 @@ file that was distributed with this source code.
                 </ul>
             {% endif %}
         </li>
+        {% endif %}
     {% else %}
         <li><a>~</a></li>
     {% endfor %}
@@ -34,12 +36,16 @@ file that was distributed with this source code.
 </ul>
 {# # }
 <ul class="navigation">
+{% if site is not null %}
 {% for page in site.getFirstPages %}
+    {% if page.getEnabled and page.getVisible %}
     <li>{% spaceless %}
         <a href="{{ allg_url(page) }}">{{ page.getTranslationByLang(_locale).title }}</a>
     {% endspaceless %}</li>
+    {% endif %}
 {% else %}
     <li>~ ~ ~</li>
 {% endfor %}
+{% endIf %}
 </ul>
 {# #}

@@ -102,7 +102,6 @@ class SiteAdmin extends Admin
                 )
             ))
             ->add('enabled')
-            ->add('visible')
             ->add('slug')
             ->add('created')
             ->add('createdBy')
@@ -160,7 +159,6 @@ class SiteAdmin extends Admin
                     ->add('title', null, array('attr' => array('onkeyup' => 'setSlug(this)')))
                     ->add('slug', null, array('required' => true))
                     ->add('enabled', null, array('required' => false))
-                    ->add('visible', null, array('required' => false))
                     ->add('contactEmail', 'email', array('required' => false))
                 ->end()
                 ->with('Languages')
@@ -185,7 +183,6 @@ class SiteAdmin extends Admin
                     ->add('title', null, array('attr' => array('onkeyup' => 'setSlug(this)')))
                     ->add('slug', null, array('required' => true))
                     ->add('enabled', null, array('required' => false))
-                    ->add('visible', null, array('required' => false))
 //                ->end()
 //                ->with('Languages')
                     ->add('mainLanguage', 'allg_static_text', array(

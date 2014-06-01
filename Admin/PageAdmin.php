@@ -147,8 +147,8 @@ class PageAdmin extends Admin
                         'data' => 'p',
                         'attr' => array('onchange' => 'showPageTypeFields(this.value);')
                     ))
-                    ->add('enabled', null, array('required' => false))
-                    ->add('visible', null, array('required' => false))
+                    ->add('enabled', null, array('required' => false, 'help' => 'if unchecked, a 404 eror page will be shown instead'))
+                    ->add('visible', null, array('required' => false, 'help' => 'if unchecked, the menu entry for this page wont be shown'))
                 ->end()
                 ->with('Contents')
                     ->add('mainLanguage', 'allg_static_text', array(
@@ -193,8 +193,8 @@ class PageAdmin extends Admin
 //                            'expanded' => true,
                         'attr' => array('onchange' => 'showPageTypeFields(this.value);')
                     ))
-                    ->add('enabled', null, array('required' => false))
-                    ->add('visible', null, array('required' => false))
+                    ->add('enabled', null, array('required' => false, 'help' => 'if unchecked, a 404 eror page will be shown instead'))
+                    ->add('visible', null, array('required' => false, 'help' => 'if unchecked, the menu entry for this page wont be shown'))
                 ->end()
 
                 ->with('Contents')

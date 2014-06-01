@@ -61,7 +61,6 @@ class PageRepository extends EntityRepository
             ->andwhere('t.lang = :locale')
             ->andwhere('t.slug = :page')
             ->andwhere('p.enabled = true')
-            ->andwhere('p.visible = true')
 
             ->setParameter('site', $site)
             ->setParameter('page', $page)
