@@ -76,24 +76,33 @@ class BaseController extends Controller
     {
         return $this->get('allegro_sites.helper.routing');
     }
+
+    /**
+     * 
+     * @param string $slug
+     * @return \Symfony\Component\HttpFoundation\Response|\Allegro\SitesBundle\Entity\Site
+     */
+    protected function requestSite($slug)
+    {
+        /* @var $siteEntity \Allegro\SitesBundle\Entity\Site */
+        $site = $this->getRepo('Site')->getSiteBySlug($slug);
+
+        if (null === $site) {
+            return $this->render(
+                    $this->getTemplate('404_site.html'),
+                    array('resourceSlug' => $slug),
+                    new \Symfony\Component\HttpFoundation\Response('', 404)
+            );
+        }
+
+        if (!$site->getEnabled()) {
+            return $this->render(
+                    $this->getTemplate('maintenance.html'),
+                    array('resourceSlug' => $slug, 'localeRoutes' => null),
+                    new \Symfony\Component\HttpFoundation\Response('', 503)
+            );
+        }
+
+        return $site;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

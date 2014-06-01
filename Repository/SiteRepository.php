@@ -16,6 +16,11 @@ use Doctrine\ORM\NoResultException;
 
 class SiteRepository extends EntityRepository
 {
+    /**
+     * 
+     * @param string $site Site slug
+     * @return \Allegro\SitesBundle\Entity\Site|null
+     */
     public function getSiteBySlug($site)
     {
         $qb = $this->createQueryBuilder('s');

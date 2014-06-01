@@ -20,17 +20,21 @@ class PageController extends BaseController
 {
     /**
      * 
-     * @param string $site
+     * @param string $site slug
      * @param string $_locale
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function landingPageAction($site, $_locale = null)
     {
-        /* @var $siteEntity \Allegro\SitesBundle\Entity\Site */
-        $siteEntity = $this->getRepo('Site')->getSiteBySlug($site);
+        /* @var $site \Allegro\SitesBundle\Entity\Site */
+        $site = $this->requestSite($site);
+
+        if ($site instanceof \Symfony\Component\HttpFoundation\Response) {
+            return $site;
+        }
 
         /* @var $landingPage Allegro\SitesBundle\Entity\Page */
-        $landingPage = $siteEntity->getLandingPage();
+        $landingPage = $site->getLandingPage();
         if (null !== $landingPage) {
             /* @var $translation Allegro\SitesBundle\Entity\PageTranslation */
             $translation = $landingPage->getTranslationByLang($_locale);
@@ -39,27 +43,27 @@ class PageController extends BaseController
             }
             else {
                 $page = $landingPage->getMainTranslation()->getSlug();
-                $_locale = $siteEntity->getMainLang();
+                $_locale = $site->getMainLang();
             }
 
             return $this->redirect(
                     $this->generateUrl('AllegroSites_page', array(
                         '_locale' => $_locale,
-                        'site' => $site,
+                        'site' => $site->getSlug(),
                         'page' => $page
                     )),
-                    $siteEntity->getPermanentLandingRedirect()? 301 : 302
+                    $site->getPermanentLandingRedirect()? 301 : 302
                 );
         }
 
         return $this->redirect(
                 $this->generateUrl('AllegroSites_sitemap', array(
-                    'site' => $site,
-                    '_locale' => !in_array($_locale, $siteEntity->getAllTranslations())
-                                    ? $siteEntity->getMainLang()
+                    'site' => $site->getSlug(),
+                    '_locale' => !in_array($_locale, $site->getAllTranslations())
+                                    ? $site->getMainLang()
                                     : $_locale
                 )),
-                $siteEntity->getPermanentLandingRedirect()? 301 : 302
+                $site->getPermanentLandingRedirect()? 301 : 302
             );
     }
 
@@ -80,21 +84,25 @@ class PageController extends BaseController
         $pageTranslation = $repo->getPageTranslation($site, $_locale, $page);
 
         if (null === $pageTranslation) {
-            /* @var $siteEntity \Allegro\SitesBundle\Entity\Site */
-            $siteEntity = $this->getRepo('Site')->getSiteBySlug($site);
+            $site = $this->requestSite($site);
+
+            if ($site instanceof \Symfony\Component\HttpFoundation\Response) {
+                return $site;
+            }
 
             // if lang is not supported redirect to the default one
-            if (!in_array($_locale, $siteEntity->getAllTranslations())) {
+            if (!in_array($_locale, $site->getAllTranslations())) {
                 return $this->redirect(
                         $this->generateUrl('AllegroSites_page', array(
-                            '_locale' => $siteEntity->getMainLang(),
+                            'site' => $site->getSlug(),
+                            '_locale' => $site->getMainLang(),
                             'page' => $page
                         ))
                     );
             }
 
-            return $this->render($this->getTemplate('404.html'), array(
-                    'pageSlug' => $page,
+            return $this->render($this->getTemplate('404_page.html'), array(
+                    'resourceSlug' => $page,
                     'translation' => $pageTranslation,
                     'localeRoutes' => null
                     ),

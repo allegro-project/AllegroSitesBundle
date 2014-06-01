@@ -34,29 +34,28 @@ class SiteController extends BaseController
             return $this->redirect($this->generateUrl('AllegroSites_sitemap'));
         }
 
-        /* @var $siteEntity \Allegro\SitesBundle\Entity\Site */
-        $siteEntity = $this->getRepo('Site')->getSiteBySlug($site);
+        /* @var $site \Allegro\SitesBundle\Entity\Site */
+        $site = $this->requestSite($site);
 
-        if (null === $siteEntity) {
-            throw $this->createNotFoundException(
-                sprintf('Site "%s" not found...ddfgruaaghkhhhsdfadf!', $site)
-            );
+        if ($site instanceof \Symfony\Component\HttpFoundation\Response) {
+            return $site;
         }
 
         // if lang is not supported redirect to the default one
-        $langs = $siteEntity->getAllTranslations();
+        $langs = $site->getAllTranslations();
         if (!in_array($_locale, $langs)) {
             return $this->redirect(
                     $this->generateUrl('AllegroSites_sitemap', array(
-                            '_locale' => $siteEntity->getMainTranslation()->getLang()
+                            'site' => $site->getSlug(),
+                            '_locale' => $site->getMainTranslation()->getLang()
                         )
                 ));
         }
 
-        $routes = $this->getRoutingHelper()->generateUrls($siteEntity);
+        $routes = $this->getRoutingHelper()->generateUrls($site);
 
         return $this->render($this->getTemplate('Site:map.html'), array(
-                'site' => $siteEntity,
+                'site' => $site,
                 '_locale' => $_locale,
                 'localeRoutes' => $routes,
             )

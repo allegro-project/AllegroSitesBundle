@@ -94,11 +94,6 @@ class Site
     protected $enabled = true;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $visible = true;
-
-    /**
      * @ORM\Column(type="string", nullable=true)
      */
     protected $contactEmail;
@@ -363,29 +358,6 @@ class Site
     public function getEnabled()
     {
         return $this->enabled;
-    }
-
-    /**
-     * Set visible
-     *
-     * @param boolean $visible
-     * @return Site
-     */
-    public function setVisible($visible)
-    {
-        $this->visible = $visible;
-
-        return $this;
-    }
-
-    /**
-     * Get visible
-     *
-     * @return boolean
-     */
-    public function getVisible()
-    {
-        return $this->visible;
     }
 
     /**

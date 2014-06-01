@@ -21,6 +21,13 @@ file that was distributed with this source code.
 
 {% block stylesheets %}
     {{ parent() }}
+    {% stylesheets
+        filter='cssrewrite'
+        output='css/gen_corporatex_404.css'
+        'bundles/allegrosites/corporatex/css/404.css'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen">
+    {% endstylesheets %}
 {% endblock stylesheets %}
 
 {% block head %}
@@ -36,7 +43,8 @@ file that was distributed with this source code.
 
             <h1>4 0 4</h1>
 
-            <h2>Ermahgerd!!</h2>
+            <h2>Ermahgerd Error</h2>
+            <h2>Resource '{{ resourceSlug }}' not found</h2>
         </header>
     </article>
 {% endblock main_content %}
