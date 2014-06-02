@@ -24,6 +24,16 @@ file that was distributed with this source code.
     </head>
 
     <body>
+        {% block notices %}
+            {% for flashType, flashMessages in app.session.flashbag.all %}
+            {% for flashMessage in flashMessages %}
+            <div class="allegro-flash {{ flashType|replace({'_': '-'}) ~ '-flash' }}">
+                {{ flashMessage }}
+            </div>
+            {% endfor %}
+            {% endfor %}
+        {% endblock %}
+
         {% block body 'base.block.body' %}
         {% block javascripts %}
             <!--[if lt IE 9]>

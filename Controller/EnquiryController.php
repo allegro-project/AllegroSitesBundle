@@ -28,22 +28,26 @@ class EnquiryController extends BaseController
      */
     public function contactAction($site, $_locale = null)
     {
-        /* @var $siteEntity \Allegro\SitesBundle\Entity\Site */
-        $siteEntity = $this->getRepo('Site')->getSiteBySlug($site);
+        /* @var $site \Allegro\SitesBundle\Entity\Site */
+        $site = $this->requestSite($site);
+        if ($site instanceof \Symfony\Component\HttpFoundation\Response) {
+            return $site;
+        }
 
-        $langs = $siteEntity->getAllTranslations();
+
+        $langs = $site->getAllTranslations();
         // wrong locale redirect with the default one
         if (!in_array($_locale, $langs)) {
             return $this->redirect(
                     $this->generateUrl('AllegroSites_contact', array(
-                            '_locale' => $siteEntity->getMainTranslation()->getLang()
+                            '_locale' => $site->getMainTranslation()->getLang()
                     ))
                 );
         }
 
         $enquiry = new Enquiry();
         $form = $this->createForm(new EnquiryType(), $enquiry);
-        $contactEmail = $siteEntity->getContactEmail();
+        $contactEmail = $site->getContactEmail();
 
         /* @var $validator \Symfony\Component\Validator\Validator */
         $validator = $this->get('validator');
@@ -56,7 +60,7 @@ class EnquiryController extends BaseController
 
         if (count($errors) > 0) {
             foreach ($errors as $error) {
-                $this->get('session')->getFlashBag()->set('allegro-notice', $error->getMessage());
+                $this->get('session')->getFlashBag()->add('allegro_warning', $error->getMessage());
             }
 
             $form->remove('submit');
@@ -71,7 +75,7 @@ class EnquiryController extends BaseController
                 $message = \Swift_Message::newInstance()
                     ->setSubject(sprintf(
                         '[%s - Site Contact] %s',
-                        $siteEntity->getSlug(),
+                        $site->getSlug(),
                         $enquiry->getSubject()
                     ))
 
@@ -89,11 +93,11 @@ class EnquiryController extends BaseController
                 $this->get('mailer')->send($message);
 
                 $response = $this->get('translator')->trans('contact.form.response.success');
-                $this->get('session')->getFlashBag()->set('allegro-notice', $response);
+                $this->get('session')->getFlashBag()->add('allegro_success', $response);
 
                 // Redirect to prevent users re-posting the form if they refresh the page
                 return $this->redirect($this->generateUrl('AllegroSites_contact', array(
-                        'site' => $site,
+                        'site' => $site->getSlug(),
                         '_locale' => $_locale,
                     )));
             }
@@ -102,13 +106,13 @@ class EnquiryController extends BaseController
         $routes = array();
         foreach ($langs as $lang) {
             $routes[$lang] = $this->generateUrl('AllegroSites_contact', array(
-                    'site' => $site,
+                    'site' => $site->getSlug(),
                     '_locale' => $lang
                 ));
         }
 
         return $this->render($this->getTemplate('Enquiry:contact.html'), array(
-            'site' => $site,
+            'site' => $site->getSlug(),
             '_locale' => $_locale,
             'localeRoutes' => $routes,
             'form' => $form->createView(),

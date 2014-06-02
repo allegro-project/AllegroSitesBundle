@@ -37,12 +37,6 @@ file that was distributed with this source code.
 
     <h1>{% trans %}contact.page.contact{% endtrans %}</h1>
 
-    {% for flashMessage in app.session.flashbag.get('allegro-notice') %}
-    <div class="allegro-notice">
-        {{ flashMessage }}
-    </div>
-    {% endfor %}
-
     {%
         include allg_template('Enquiry:contact_form.html')
         with { 'site': site, '_locale': _locale, 'form': form } only

@@ -78,18 +78,17 @@ class PageController extends BaseController
      */
     public function showAction($site, $_locale, $page)
     {
+        $site = $this->requestSite($site);
+        if ($site instanceof \Symfony\Component\HttpFoundation\Response) {
+            return $site;
+        }
+
         /* @var $repo \Allegro\SitesBundle\Repository\PageRepository */
         $repo = $this->getRepo('Page');
         /* @var $pageTranslation \Allegro\SitesBundle\Entity\PageTranslation */
-        $pageTranslation = $repo->getPageTranslation($site, $_locale, $page);
+        $pageTranslation = $repo->getPageTranslation($site->getSlug(), $_locale, $page);
 
         if (null === $pageTranslation) {
-            $site = $this->requestSite($site);
-
-            if ($site instanceof \Symfony\Component\HttpFoundation\Response) {
-                return $site;
-            }
-
             // if lang is not supported redirect to the default one
             if (!in_array($_locale, $site->getAllTranslations())) {
                 return $this->redirect(

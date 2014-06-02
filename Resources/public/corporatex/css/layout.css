@@ -12,6 +12,15 @@ body {
     background: url(../img/bg.png) fixed;
 }
 
+.allegro-flash {
+    background: #eee;
+    padding: 10px 15px;
+    margin: 0;
+    border: 1px solid #888;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
 /* - - - - */
 
 #header {

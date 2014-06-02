@@ -95,12 +95,32 @@ class BaseController extends Controller
             );
         }
 
+        /* @var $user \Application\Sonata\UserBundle\Entity\User */
+        $user = $this->getUser();
+        $userIsAdmin = false;
+        if (null !== $user) {
+            foreach ($user->getRoles() as $role) {
+                if (false !== strpos(strtolower($role), 'admin')) {
+                    $userIsAdmin = true;
+                    break;
+                }
+            }
+        }
+
         if (!$site->getEnabled()) {
-            return $this->render(
-                    $this->getTemplate('maintenance.html'),
-                    array('resourceSlug' => $slug, 'localeRoutes' => null),
-                    new \Symfony\Component\HttpFoundation\Response('', 503)
-            );
+            if (!$userIsAdmin) {
+                return $this->render(
+                        $this->getTemplate('maintenance.html'),
+                        array('resourceSlug' => $slug, 'localeRoutes' => null),
+                        new \Symfony\Component\HttpFoundation\Response('', 503)
+                );
+            }
+
+            $disabledNotice = 'Maintenance mode enabled';
+            $notices = $this->get('session')->getFlashBag()->peek('allegro_notice');
+            if (!in_array($disabledNotice, $notices)) {
+                $this->get('session')->getFlashBag()->add('allegro_notice', $disabledNotice);
+            }
         }
 
         return $site;

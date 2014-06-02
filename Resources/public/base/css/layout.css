@@ -3,53 +3,64 @@
 /******************************************************************************/
 
 body {
-	background: #313131 url('../img/bg.jpg') fixed;
-	font-family: Lato, Ubuntu-lite, 'Trebuchet MS', Arial, Helvetica, sans-serif;
-	color: #292929;
-	font-weight: 300;
+    background: #313131 url('../img/bg.jpg') fixed;
+    font-family: Lato, Ubuntu-lite, 'Trebuchet MS', Arial, Helvetica, sans-serif;
+    color: #292929;
+    font-weight: 300;
 }
 
 a {
-	text-decoration: none;
-	border-bottom: 1px dotted #459ACF;
-	color: #000;
+    text-decoration: none;
+    border-bottom: 1px dotted #459ACF;
+    color: #000;
 }
 
 h1, h2, h3, h4 {
-	text-shadow: 0.1em 0.1em 0.2em #808080;
-	text-transform: uppercase;
-	font-weight: 300;
+    text-shadow: 0.1em 0.1em 0.2em #808080;
+    text-transform: uppercase;
+    font-weight: 300;
 }
 
 ul {
-	list-style-type: none
+    list-style-type: none
 }
 
 li {
-	margin-left:8pt;
+    margin-left: 8pt;
 }
 
 small {
-	font-size: 75%;
+    font-size: 75%;
 }
 
 pre {
-	white-space: pre-wrap;
+    white-space: pre-wrap;
 }
 
 code {
-	font-family: Monaco, Consolas, "Lucida Console", monospace;
-	color:#81BBDF;
-	background:#555;
+    font-family: Monaco, Consolas, "Lucida Console", monospace;
+    color: #81BBDF;
+    background: #555;
 }
 
-.notice {
-	background:#333;
-	color:#ddd;
-	padding: 10px 15px;
-	margin: 0;
-	border:1px solid #459ACF;
-	border-radius: 4px;
+.allegro-flash {
+    background: #333;
+    padding: 10px 15px;
+    margin: 0;
+    border: 1px solid #459ACF;
+    font-weight: bold;
+    border-top: 0;
+}
+.allegro-notice-flash {
+    color: #ffa;
+}
+
+.allegro-warning-flash {
+    color: #faa;
+}
+
+.allegro-success-flash {
+    color: #afa;
 }
 
 /******************************************************************************/
@@ -57,20 +68,20 @@ code {
 /******************************************************************************/
 
 #login-link {
-	float: left;
-	margin: 10px;
-	border: 1px solid #459ACF;
-	padding: 10px 15px;
-	color: #999;
-	text-decoration: none;
-	box-shadow: 0 8px 6px 3px #222;
-	background: #333;
-	font-size: 80%;
+    float: left;
+    margin: 10px;
+    border: 1px solid #459ACF;
+    padding: 10px 15px;
+    color: #999;
+    text-decoration: none;
+    box-shadow: 0 8px 6px 3px #222;
+    background: #333;
+    font-size: 80%;
 }
 
 #login-link a {
-	color: #FFF;
-	text-decoration: none;
+    color: #FFF;
+    text-decoration: none;
 }
 
 #other-langs {
@@ -78,76 +89,76 @@ code {
 }
 
 #mainmenu {
-	background: #202020 url('../img/bg_top.png') no-repeat;
-	font: 300 1.2em 'Yanone Kaffeesatz', Lato;
-	text-transform: capitalize;
-	font-variant: small-caps;
-	color: #999;
-	text-align: right;
-	text-shadow: 2px 2px 2px #444;
-	border-bottom: 1px solid #459ACF;
-	box-shadow: 0 8px 6px -6px #111;
+    background: #202020 url('../img/bg_top.png') no-repeat;
+    font: 300 1.2em 'Yanone Kaffeesatz', Lato;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    color: #999;
+    text-align: right;
+    text-shadow: 2px 2px 2px #444;
+    border-bottom: 1px solid #459ACF;
+    box-shadow: 0 8px 6px -6px #111;
 }
 #mainmenu > ul { display: inline-block; }
-#mainmenu ul, #mainmenu li { margin:0; padding:0; }
+#mainmenu ul, #mainmenu li { margin: 0; padding: 0; }
 #mainmenu > ul ul { display: none; }
 #mainmenu > ul ul li { padding: 0 4pt; background: #202020; }
 
 #mainmenu > ul > li {
-	display: inline-block;
-	list-style: none;
-	padding: 0px 0px 0px 0px;
-	position: relative;
+    display: inline-block;
+    list-style: none;
+    padding: 0px 0px 0px 0px;
+    position: relative;
 }
 
 #mainmenu a {
-	font-size: .9em;
-	display: inline-block;
-	color: #aaa;
-	text-decoration: none;
-	border: 0;
-	background: transparent;
+    font-size: .9em;
+    display: inline-block;
+    color: #aaa;
+    text-decoration: none;
+    border: 0;
+    background: transparent;
 }
 
 #mainmenu > ul > li > a {
-	font: 300 1.5em 'Yanone Kaffeesatz', Lato;
-	padding: 60px 15px 15px 15px;
-	text-transform: uppercase;
-	font-variant: normal;
+    font: 300 1.5em 'Yanone Kaffeesatz', Lato;
+    padding: 60px 15px 15px 15px;
+    text-transform: uppercase;
+    font-variant: normal;
 }
 
 #mainmenu > ul > li ul a {
-	width: 100%;
-	line-height: 30pt;
+    width: 100%;
+    line-height: 30pt;
 }
 #mainmenu > ul > li > ul {
-	right: 0 !important;
-	top: 100% !important;
-	position: absolute;
+    right: 0 !important;
+    top: 100% !important;
+    position: absolute;
 }
 
 #mainmenu li:hover { position: relative; z-index: 2000; } 
 
 #mainmenu li:hover > ul {
-	display: block;
-	width: 200px;
-	position: absolute;
-	z-index: 1000;
-	top: 30%;
-	right: 70%;
+    display: block;
+    width: 200px;
+    position: absolute;
+    z-index: 1000;
+    top: 30%;
+    right: 70%;
 }
 
 #mainmenu > ul > li a:hover {
-	color: #eee;
-	box-shadow: 0 8px 6px -6px #459ACF;
-	background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(31,169,244,1)), to(rgba(32, 32, 32, 0)) );
-	background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(31,169,244,1) 0%, rgba(32, 32, 32, 0) 100%);
+    color: #eee;
+    box-shadow: 0 8px 6px -6px #459ACF;
+    background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(31,169,244,1)), to(rgba(32, 32, 32, 0)) );
+    background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(31,169,244,1) 0%, rgba(32, 32, 32, 0) 100%);
 }
 
 #mainmenu li:hover > a,
 #mainmenu li:hover {
-	color: #eee;
-	background: #414141 url('../img/bg_2.jpg');
+    color: #eee;
+    background: #414141 url('../img/bg_2.jpg');
 }
 
 /******************************************************************************/
@@ -155,53 +166,53 @@ code {
 /******************************************************************************/
 
 #container {
-	border:1px solid #459ACF;
-	margin: 50px 100px; /* margin-bottom is defined with sticky footer */
-	padding: 20px;
-	padding-right: 285px;  /* sidebar width */
-	background:#ddd;
-	box-shadow: 0 8px 6px 3px #555;
-	border-radius:4px;
-	overflow: hidden;
+    border:1px solid #459ACF;
+    margin: 50px 100px; /* margin-bottom is defined with sticky footer */
+    padding: 20px;
+    padding-right: 285px;  /* sidebar width */
+    background: #ddd;
+    box-shadow: 0 8px 6px 3px #555;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .main-col {
-	float: left;
-	width: 100%;
-	margin-right:20px;
-	position:relative;
+    float: left;
+    width: 100%;
+    margin-right: 20px;
+    position: relative;
 }
 
 .main-col p {
-	line-height: 1.5em;
-	margin-bottom: 20px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
 }
 
 .sidebar {
-	position:relative;
-	float:left;
-	width: 245px;
-	margin-right:-285px;
-	padding: 0;
-	background: #ccc;
+    position: relative;
+    float: left;
+    width: 245px;
+    margin-right: -285px;
+    padding: 0;
+    background: #ccc;
 }
 
 @media all and (max-width: 800px) {
-	#container {
-		margin: 50px; /* margin-bottom is defined with sticky footer */
-	}
+    #container {
+        margin: 50px; /* margin-bottom is defined with sticky footer */
+    }
 }
 
 @media all and (max-width: 620px) {
-	#container {
-		padding-right: 20px;
-	}
+    #container {
+        padding-right: 20px;
+    }
 
-	.sidebar {
-		clear: left;
-		width: auto;
-		margin-right: 0px;
-	}
+    .sidebar {
+        clear: left;
+        width: auto;
+        margin-right: 0px;
+    }
 }
 
 /******************************************************************************/
@@ -209,30 +220,30 @@ code {
 /******************************************************************************/
 
 #footer {
-	border-top: 1px solid #459ACF;
-	color: #aaa;
-	background:#202020;
-	box-shadow: 0 0 6px 0 #111;
-	text-align: center;
-	padding-top: 20px;
+    border-top: 1px solid #459ACF;
+    color: #aaa;
+    background:#202020;
+    box-shadow: 0 0 6px 0 #111;
+    text-align: center;
+    padding-top: 20px;
 }
 
 #footer .linklist {
-	display:inline-block;
-	text-align:left;
-	margin:0 40px;
-	vertical-align:top;
-	line-height: 150%;
+    display: inline-block;
+    text-align: left;
+    margin: 0 40px;
+    vertical-align: top;
+    line-height: 150%;
 }
 
 #footer .linklist a {
-	padding-left: 4px;
-	border: 0;
-	border-left: 1px solid transparent;
-	color: #ccc;
-	margin-left: 3px;
+    padding-left: 4px;
+    border: 0;
+    border-left: 1px solid transparent;
+    color: #ccc;
+    margin-left: 3px;
 }
 
 #footer .linklist a:hover {
-	border-left: 1px dotted #459ACF;
+    border-left: 1px dotted #459ACF;
 }
